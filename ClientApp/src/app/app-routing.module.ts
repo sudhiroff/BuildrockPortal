@@ -12,10 +12,10 @@ const routes: Routes = [
     path: "", component: LayoutComponent,  children: [
       { path: "dashboard", component: DashboardComponent },
       { path: 'logistic', loadChildren: () => import('./logistic/logistic.module').then(m => m.LogisticModule) },
-      { path: 'config', loadChildren: () => import('./config/config.module').then(m => m.ConfigModule) }
+      { path: 'config', loadChildren: () => import('./config/config.module').then(m => m.ConfigModule) },
+      { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) }
     ]
-  },
-  { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) }
+  },  
 ];
 
 @NgModule({

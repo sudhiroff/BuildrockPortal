@@ -12,8 +12,8 @@ export const nav = [
     {
         id: 2, title: "Sales & Enquiry", childs:
             [
-                { path: '', title: "New Customer Registration" },
-                { path: '', title: "New Vender Registration" },
+                { path: 'sales/customers', title: "New Customer Registration" },
+                { path: 'sales/vendors', title: "New Vender Registration" },
                 { path: '', title: "New sales enquiery" }
             ]
     },
