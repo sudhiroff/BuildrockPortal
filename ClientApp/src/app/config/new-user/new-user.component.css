@@ -1,0 +1,21 @@
+.mat-form-field-infix {
+  width: 300px !important;
+}
+
+.control-width {
+  width: 100%;
+}
+
+.signup-panel div {
+  padding-bottom: 10px;
+}
+
+.signup-tab td:first-child {
+  text-align: right;
+  padding-top: 28px;
+}
+
+.table td,
+.table th {
+  padding: 5px 10px;
+}

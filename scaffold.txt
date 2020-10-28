@@ -1,0 +1,3 @@
+﻿ Scaffold-DbContext "Server=SUDHIR\SQLEXPRESS;Database=buildrock_portal;User ID=sa;Password=kumar" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Model -Context "BuildrockContext" -DataAnnotations
+
+ Scaffold-DbContext "Server=SUDHIR\SQLEXPRESS;Database=buildrock_portal;User ID=sa;Password=kumar" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Model

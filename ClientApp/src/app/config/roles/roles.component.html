@@ -1,0 +1,42 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <section class="col-lg-12">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Roles</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-primary btn-xs" (click)="New_Click()">Add New</button>
+                </div>
+              </div>
+              <div class="card-body table-responsive p-0">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Sr No.</th>
+                      <th>Role Name</th>
+                      <th>Module Access</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of rolesList;let i=index">
+                      <td>{{i+1}}</td>
+                      <td>{{item.roleName}}</td>
+                      <td>{{item['moduleName']}}</td>
+                      <td>
+                        <button class="btn btn-xs btn-flat btn-info" (click)="Edit_Click(item._id)">Edit</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

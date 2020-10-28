@@ -1,0 +1,116 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <section class="col-lg-12">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body table-responsive p-0">
+                <form [formGroup]="form" (ngSubmit)="Register_Click()">
+                  <table class="table table-head-fixed text-nowrap signup-tab">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <strong>First Name</strong>
+                        </td>
+                        <td>
+                          <mat-form-field class="control-width">
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="firstName" placeholder="First Name">
+                            <mat-error>
+                              First name is <strong>required</strong>
+                            </mat-error>
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><strong>Last Name</strong></td>
+                        <td>
+                          <mat-form-field class="control-width">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="lastName" placeholder="Last Name">
+                            <mat-error>
+                              Last name is <strong>required</strong>
+                            </mat-error>
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>Email</strong>
+                        </td>
+                        <td>
+                          <mat-form-field class="control-width">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" type="email" placeholder="Email id">
+                            <mat-error>
+                              Emal is <strong>required</strong>
+                            </mat-error>
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><strong>Password</strong></td>
+                        <td>
+                          <mat-form-field class="control-width">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="password" type="password" placeholder="Password">
+                            <mat-error>
+                              Password is <strong>required</strong>
+                            </mat-error>
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>Mobile no</strong>
+                        </td>
+                        <td>
+                          <mat-form-field class="control-width">
+                            <mat-label>Mobile no</mat-label>
+                            <input matInput formControlName="mobileNo" placeholder="Mobile no.">
+                            <mat-error>
+                              Mobile no is <strong>required</strong>
+                            </mat-error>
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>User Role</strong>
+                        </td>
+                        <td>
+                          <mat-form-field>
+                            <mat-label>Choose an option</mat-label>
+                            <mat-select formControlName="role" required>
+                              <mat-option value="option1">--Select--</mat-option>
+                              <mat-option *ngFor="let o of roleList" [value]="o._id">{{o['roleName']}}</mat-option>
+
+                            </mat-select>
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td>
+                          <button class="btn btn-primary">{{btnTitle}}</button><br>
+                          <p class="text-danger" *ngIf="error">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i> <strong>Error!</strong> {{error}}
+                          </p>
+                          <p *ngIf="successMsg" class="text-success">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i> <strong>Success!</strong>
+                            {{successMsg}}
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
