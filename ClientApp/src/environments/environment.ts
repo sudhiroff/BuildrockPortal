@@ -4,11 +4,15 @@
 
 export const environment = {
   production: false,
+  baseUrl:"http://localhost:59075",
   api: {
-    login: "http://localhost:3000/login",
+    login: "/api/login",
     signup: "http://localhost:3000/signup",
     userList: "http://localhost:3000/api/config/userlist",
     Role: "http://localhost:3000/api/config/roles",
+    customer: "/api/customers",
+    vendor: "/api/vendors",
+    items:"/api/items"
   }
 };
 

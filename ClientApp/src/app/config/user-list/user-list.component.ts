@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared/shared.service';
 import { result } from 'lodash';
 import { Router } from '@angular/router';
+import { GlobalService } from 'src/app/shared/global.service';
 
 @Component({
   selector: 'app-user-list',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class UserListComponent implements OnInit {
   public Users: Array<any>;
   public Roles: Array<any>;
-  constructor(private router: Router, private sharedService: SharedService) { }
+  constructor(private router: Router, private sharedService: SharedService,private _glb:GlobalService) { }
 
   ngOnInit(): void {
     this.sharedService.breadcrumbTitle = "User List";
@@ -19,11 +20,11 @@ export class UserListComponent implements OnInit {
   }
 
   public loadUsers() {
-    this.sharedService.GetUserList()
+    this.sharedService.getApi(this._glb.getUserList)
       .subscribe(result => {
-        if (result[0]['status'] == 'success' && result[1]['status'] == 'success') {
-          this.Users = result[0]['data'];
-          this.Roles = result[1]['data'];
+        debugger;
+        if (result['status'] == 'success') {
+          this.Users = result['data'];
         }
       })
   }

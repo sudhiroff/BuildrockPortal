@@ -6,14 +6,14 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">User List</h3>
+                  <h3 class="card-title">All Customers</h3>
   
                   <div class="card-tools">
                     <div class="input-group input-group-sm">
                       <!-- <input type="text" name="table_search" class="form-control float-right" placeholder="Search"> -->
   
                       <div class="input-group-append">
-                        <button type="button" class="btn btn-primary btn-xs" (click)="New_Click()">Add New</button>
+                        <a class="btn btn-primary btn-xs" routerLink="/sales/new-customer">+ New</a>
                       </div>
                     </div>
                   </div>
@@ -23,23 +23,30 @@
                   <table class="table table-head-fixed text-nowrap">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>S.No.</th>
+                        <th>Company Name</th>
                         <th>Name</th>
-                        <th>Email</th>
+                        <th>Contact Person</th>
                         <th>Mobile No.</th>
-                        <th>Type</th>
+                        <th>Billing Add.</th>
+                        <th>Shiping Add.</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let item of Users;let i=index">
+                      <tr *ngFor="let item of CustomerList;let i=index">
                         <td>{{i+1}}</td>
-                        <td>{{item.firstName}} {{item.lastName}}</td>
-                        <td>{{item.email}}</td>
-                        <td>{{item.mobileNo}}</td>
-                        <td>{{getRoleName(item['role'])}}</td>
+                        <td>{{item.CompanyName}}</td>
+                        <td>{{item.CustomerName}}</td>
+                        <td>{{item.ContactPersonName}}</td>
+                        <td>{{item.CustomerPhone}}</td>
+                        <td>{{item.BillingAddress}}</td>
+                        <td>{{item.ShippingAddress}}</td>
                         <td>
-                          <button class="btn btn-xs btn-flat btn-info" (click)="Edit_Click(item._id)">Edit</button>
+                          <a routerLink="/sales/view-customer/{{item.Id}}"><i class="fas fa fa-eye"></i></a>
+                         
+                          <a style="margin-left: 10px;" routerLink="/sales/edit-customer/{{item.Id}}"><i class="fas fa fa-pen"></i></a>
+                           <!-- <button class="btn btn-xs btn-flat btn-info" (click)="Edit_Click(item._id)">Edit</button> -->
                         </td>
                       </tr>
                     </tbody>

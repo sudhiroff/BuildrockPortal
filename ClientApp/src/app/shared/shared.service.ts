@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, forkJoin } from 'rxjs';
+import { Observable, Subject, forkJoin, InteropObservable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { mergeMap, concatMap } from 'rxjs/operators';
 
@@ -9,11 +9,16 @@ import { mergeMap, concatMap } from 'rxjs/operators';
 })
 export class SharedService {
   subBreadcrumb = new Subject<any>();
+  subSpinner = new Subject<any>();
 
   constructor(private http: HttpClient) { }
 
   set breadcrumbTitle(text: String) {
     this.subBreadcrumb.next(text);
+  }
+
+  public IsProgress(val:Boolean){
+    this.subSpinner.next(val);
   }
 
   public GetUserList(): Observable<any> {
@@ -52,6 +57,36 @@ export class SharedService {
 
   public GetRole(id): Observable<any> {
     return this.http.get(environment.api.Role + '/' + id);
+  }
+
+ // -------ITEMS-----------------
+   public Items(){
+    let url=this.baseUrl+environment.api.items;
+    return this.http.get(url);
+  }
+
+  public ItemById(Id){
+    let url=this.baseUrl+environment.api.items;
+    return this.http.get(url+"/"+Id);
+  }
+
+  public addItem(body:any){
+    let url=this.baseUrl+environment.api.items;
+    return this.http.post(url, body);
+  }
+
+  public updateItem(Id, body: any) {
+    let url = this.baseUrl + environment.api.items;
+    return this.http.put(url + '/' + Id, body);
+  }
+ // ***********  ITEMS  END *******************
+
+  get baseUrl(){
+    return environment.baseUrl;
+  }
+
+  public getApi(_url: string): Observable<any> {
+    return this.http.get(_url);
   }
 
 }

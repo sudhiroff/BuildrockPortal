@@ -3,9 +3,9 @@
 
 <app-side-nav></app-side-nav>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" style="padding-top: 2px;">
 
-  <app-breadcrumb></app-breadcrumb>
+  <!-- <app-breadcrumb></app-breadcrumb> -->
   <router-outlet></router-outlet>
 
 </div>
@@ -16,3 +16,7 @@
   <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
+<div class="overlay" *ngIf="progress">
+  <div class="custom-overlay"></div>
+  <i class="fas fa-circle-notch fa-spinner fa-spin cus_spinner" aria-hidden="true"></i>
+</div>

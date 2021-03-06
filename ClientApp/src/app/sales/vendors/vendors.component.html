@@ -1,1 +1,43 @@
-<p>vendors works!</p>
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">All Vendors</h3>
+              <a class="btn btn-primary btn-xs" style="float: right;" routerLink="/sales/new-vendor">+ New</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                      <tr>
+                        <th>S.No.</th>
+                        <th>Company Name</th>
+                        <th>Name</th>
+                        <th>Contact Person</th>
+                        <th>Mobile No.</th>
+                        <th>Billing Add.</th>
+                        <th>Shiping Add.</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of VendorList;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.CompanyName}}</td>
+                        <td>{{item.VendorName}}</td>
+                        <td>{{item.ContactPersonName}}</td>
+                        <td>{{item.VendorPhone}}</td>
+                        <td>{{item.BillingAddress}}</td>
+                        <td>{{item.ShippingAddress}}</td>
+                        <td>
+                          <a routerLink="/sales/view-vendor/{{item.Id}}"><i class="fas fa fa-eye"></i></a>
+                         
+                          <a style="margin-left: 10px;" routerLink="/sales/edit-vendor/{{item.Id}}"><i class="fas fa fa-pen"></i></a>
+                           <!-- <button class="btn btn-xs btn-flat btn-info" (click)="Edit_Click(item._id)">Edit</button> -->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</section>

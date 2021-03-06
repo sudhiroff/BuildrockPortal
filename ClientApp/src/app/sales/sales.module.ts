@@ -6,6 +6,8 @@ import { CustomersComponent } from './customers/customers.component';
 import { VendorsComponent } from './vendors/vendors.component';
 import { AddVendorComponent } from './add-vendor/add-vendor.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppMaterialModule } from '../material-module';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
   ],
   imports: [
     CommonModule,
-    SalesRoutingModule
+    SalesRoutingModule,
+    ReactiveFormsModule,
+    AppMaterialModule,
   ]
 })
 export class SalesModule { }

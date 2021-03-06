@@ -24,7 +24,9 @@ namespace BuildrockPortal
             services.AddControllersWithViews();
             // set connection for db connect
             services.AddDbContext<BuildrockContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("buildrock")));
-           // In production, the Angular files will be served from this directory
+            // In production, the Angular files will be served from this directory
+            services.AddControllers()
+             .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
@@ -43,7 +45,10 @@ namespace BuildrockPortal
                 app.UseExceptionHandler("/Error");
             }
 
-
+            app.UseCors(builder => builder
+                         .AllowAnyOrigin()
+                         .AllowAnyMethod()
+                         .AllowAnyHeader());
             app.UseStaticFiles();
             if (!env.IsDevelopment())
             {

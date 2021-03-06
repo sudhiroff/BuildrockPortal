@@ -1,0 +1,41 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">All Items</h3>
+              <a class="btn btn-primary btn-xs" style="float: right;" routerLink="/logistic/add-item">+ New</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                      <tr>
+                        <th>S.No.</th>
+                        <th>Name</th>
+                        <th>HSN Code</th>
+                        <th>Unit</th>
+                        <th>Selling Price</th>
+                        <th>Cost Price</th>
+                        <th>GST</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of ItemList;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Hsncode}}</td>
+                        <td>{{item.Unit}}</td>
+                        <td>{{item.SellingPrice}}</td>
+                        <td>{{item.CostPrice}}</td>
+                        <td>{{item.Gst}}</td>
+                        <td>
+                          <a routerLink="/logistic/view-item/{{item.Id}}"><i class="fas fa fa-eye"></i></a>
+                          <a style="margin-left: 10px;" routerLink="/logistic/edit-item/{{item.Id}}"><i class="fas fa fa-pen"></i></a>
+                       </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</section>

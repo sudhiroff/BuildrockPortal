@@ -24,7 +24,12 @@ namespace BuildrockPortal.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PortalLogin>>> GetPortalLogin()
         {
-            return await _context.PortalLogin.ToListAsync();
+            //return await _context.PortalLogin.ToListAsync();
+            return Ok(new
+            {
+                status = "success",
+                data = await _context.PortalLogin.ToListAsync()
+            });
         }
 
         // GET: api/PortalLogins/5

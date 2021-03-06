@@ -34,10 +34,10 @@
                   <tbody>
                     <tr *ngFor="let item of Users;let i=index">
                       <td>{{i+1}}</td>
-                      <td>{{item.firstName}} {{item.lastName}}</td>
-                      <td>{{item.email}}</td>
-                      <td>{{item.mobileNo}}</td>
-                      <td>{{getRoleName(item['role'])}}</td>
+                      <td>{{item.Name}}</td>
+                      <td>{{item.EmailId}}</td>
+                      <td>{{item.MobileNo}}</td>
+                      <!-- <td>{{getRoleName(item['role'])}}</td> -->
                       <td>
                         <button class="btn btn-xs btn-flat btn-info" (click)="Edit_Click(item._id)">Edit</button>
                       </td>

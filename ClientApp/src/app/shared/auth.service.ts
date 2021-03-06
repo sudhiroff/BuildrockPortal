@@ -25,7 +25,7 @@ export class AuthService {
     get fullName() {
         if (localStorage.getItem('user')) {
             const user = JSON.parse(localStorage.getItem('user'));
-            return user['firstName'] + ' ' + user['lastName'];
+            return user['name'];
         } else {
             return '';
         }
@@ -34,7 +34,7 @@ export class AuthService {
     get loggedInUserId() {
         if (localStorage.getItem('user')) {
             const user = JSON.parse(localStorage.getItem('user'));
-            return user['_id'];
+            return user['id'];
         } else {
             return '';
         }

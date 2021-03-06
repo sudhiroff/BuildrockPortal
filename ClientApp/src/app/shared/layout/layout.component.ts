@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
-
-  constructor() { }
+  public progress: Boolean = false;
+  constructor(private shared: SharedService) { }
 
   ngOnInit(): void {
+    this.shared.subSpinner.subscribe(res => {
+      this.progress = res;
+    });
   }
 
 }

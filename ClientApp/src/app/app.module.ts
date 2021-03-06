@@ -17,6 +17,8 @@ import { SideNavComponent } from './shared/side-nav/side-nav.component';
 import { ToDoListComponent } from './shared/to-do-list/to-do-list.component';
 import { TestComponent } from './test/test.component';
 import { AppMaterialModule } from './material-module';
+import { WorkProgressComponent } from './work-progress/work-progress.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,15 +31,12 @@ import { AppMaterialModule } from './material-module';
     DashboardComponent,
     BreadcrumbComponent,
     FooterComponent,
-    ToDoListComponent
+    ToDoListComponent,
+    WorkProgressComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AppMaterialModule,
+    SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],

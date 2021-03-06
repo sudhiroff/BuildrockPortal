@@ -1,0 +1,18 @@
+.custom-overlay{
+    width: 100%;
+height: 100%;
+position: absolute;
+/* border: 1px solid red; */
+top: 0;
+background: #ddd;
+opacity: .3;
+z-index: 1000000
+}
+
+.cus_spinner{
+    font-size: 50px;
+position: fixed;
+left: 50%;
+top: 40%;
+z-index: 5000000
+}

@@ -7,20 +7,20 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form [formGroup]="form" (ngSubmit)="Login_Click()">
+      <form [formGroup]="form" (ngSubmit)="Login_Click()" autocomplete="off">
         <div class="input-group mb-3">
-          <mat-form-field class="example-full-width" style="width: 100%;">
+          <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;height: 45px;">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="email" placeholder="Ex. pat@example.com" required>
+            <input matInput formControlName="EmailId" type="email" autocomplete="off" placeholder="Ex. pat@example.com" required>
             <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
               Please enter a valid email address
             </mat-error>
           </mat-form-field>
         </div>
         <div class="input-group mb-3">
-          <mat-form-field class="example-full-width" style="width: 100%;">
+          <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password" placeholder="Enter your password" required>
+            <input matInput formControlName="Password" type="password" placeholder="Enter your password" required>
           </mat-form-field>
         </div>
         <div class="row">

@@ -1,0 +1,44 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{mode}} Item</h3>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="form" autocomplete="off">
+                    <div class="row" *ngFor="let item of formCtrls">
+                        <div class="col-2" style="font-weight: 500;">
+                            <span>{{item['title']}}</span>
+                        </div>
+                        <div class="col-4">
+                            <div *ngIf="item.type=='textbox'" class="input-group mb-3">
+                                <mat-form-field style="width: 100%;">
+                                    <input matInput formControlName="{{item.id}}" placeholder="{{item.title}}">
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="item.type=='dropdown'" class="input-group mb-3">
+                                <mat-form-field style="width: 100%;">
+                                    <mat-select formControlName="{{item.id}}">
+                                        <mat-option value="">--Select--</mat-option>
+                                        <mat-option *ngFor="let opt of item.data" [value]="opt.value">
+                                            {{opt.text}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-5"></div>
+                        <div class="col-4">
+                            <button *ngIf="mode=='Add'" class="btn btn-success" (click)="save()">Submit</button>
+                            <button *ngIf="mode=='Update'" class="btn btn-success" (click)="update()">Update</button>
+                            <a style="margin-left: 10px;" class="btn btn-warning" routerLink="/logistic/items">Back</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

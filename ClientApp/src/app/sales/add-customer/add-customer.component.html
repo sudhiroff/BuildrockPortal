@@ -1,1 +1,68 @@
-<p>add-customer works!</p>
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{mode}} Customer</h3>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="form" autocomplete="off">
+                    <div class="row" *ngFor="let item of formCtrls[0]['items']">                       
+                        <div class="col-2" style="font-weight: 500;">
+                            <span>{{item['title']}}</span>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group mb-3">
+                                <mat-form-field style="width: 100%;">
+                                    <input matInput formControlName="{{item.id}}" placeholder="{{item.title}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border-top: 2px solid rgba(0, 0, 0, 0.1);border-bottom: 2px solid #fff;">
+                       <h6>Address</h6>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row" *ngFor="let item of formCtrls[1]['items']">
+                                <div class="col-4" style="font-weight: 500;">
+                                    <span>{{item['title']}}</span>
+                                </div>
+                                <div class="col-7">
+                                    <div class="input-group mb-3">
+                                        <mat-form-field style="width: 100%;">
+                                            <input matInput formControlName="{{item.id}}" placeholder="{{item.title}}">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="row" *ngFor="let item of formCtrls[2]['items']">
+                                <div class="col-4" style="font-weight: 500;">
+                                    <span>{{item['title']}}</span>
+                                </div>
+                                <div class="col-7">
+                                    <div class="input-group mb-3">
+                                        <mat-form-field style="width: 100%;">
+                                            <input matInput formControlName="{{item.id}}" placeholder="{{item.title}}">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-5"></div>
+                        <div class="col-4">
+                            <button *ngIf="mode=='Add'" class="btn btn-success" (click)="saveCustomer()">Submit</button>
+                            <button *ngIf="mode=='Update'" class="btn btn-success" (click)="updateCustomer()">Update</button>
+                            <a style="margin-left: 10px;" class="btn btn-warning" routerLink="/sales/customers">Back</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

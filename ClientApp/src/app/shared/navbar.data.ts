@@ -2,57 +2,58 @@ export const nav = [
     {
         id: 1, title: "Employee Self Service", childs:
             [
-                { title: "Profile", path: "" },
-                { title: "Leave Tracker", path: '' },
-                { title: "Expense Form", path: '' },
-                { title: "Attandance Tracker", path: '' },
-                { title: "Overtime and Extra hour", path: '' }
+                { title: "Profile", path: "work-progress" },
+                { title: "Leave Tracker", path: 'work-progress' },
+                { title: "Expense Form", path: 'work-progress' },
+                { title: "Attandance Tracker", path: 'work-progress' },
+                { title: "Overtime and Extra hour", path: 'work-progress' }
             ]
     },
     {
         id: 2, title: "Sales & Enquiry", childs:
             [
-                { path: 'sales/customers', title: "New Customer Registration" },
-                { path: 'sales/vendors', title: "New Vender Registration" },
-                { path: '', title: "New sales enquiery" }
+                { path: 'sales/customers', title: "Customers" },
+                { path: 'sales/vendors', title: "Venders" },
+                { path: 'work-progress', title: "New sales enquiery" }
             ]
     },
     {
         id: 3, title: "Engineering Services", childs:
             [
-                { path: '', title: "Product Development Tracker" },
-                { path: '', title: "Internal Trial Reports" },
-                { path: '', title: "Production Order" },
-                { path: '', title: "Production Tracker" },
-                { path: '', title: "For MTC Print Conc Admixture" },
-                { path: '', title: "Standard Operating Procedure for Production" },
-                { path: '', title: "Label Printing Conc. Admixture" }
+                { path: 'work-progress', title: "Product Development Tracker" },
+                { path: 'work-progress', title: "Internal Trial Reports" },
+                { path: 'work-progress', title: "Production Order" },
+                { path: 'work-progress', title: "Production Tracker" },
+                { path: 'work-progress', title: "For MTC Print Conc Admixture" },
+                { path: 'work-progress', title: "Standard Operating Procedure for Production" },
+                { path: 'work-progress', title: "Label Printing Conc. Admixture" }
             ]
     },
     {
         id: 4, title: "Account & Finance", childs:
             [
-                { path: '', title: "Daily Standard Operating Procedure-Acc." },
-                { path: '', title: "Monthly Status Report" },
-                { path: '', title: "Tax Calender" },
-                { path: '', title: "Internal Audit Checklist" }
+                { path: 'work-progress', title: "Daily Standard Operating Procedure-Acc." },
+                { path: 'work-progress', title: "Monthly Status Report" },
+                { path: 'work-progress', title: "Tax Calender" },
+                { path: 'work-progress', title: "Internal Audit Checklist" }
             ]
     },
     {
         id: 5, title: "Logistic", childs:
             [
-                { path: '', title: "Inward/Outward Register" },
-                { path: '', title: "Manual Inventry Tracker" },
-                { path: '', title: "Inventry & Warehouse Mgmt Checklist" },
-                { path: '', title: "Local frieght & handling Charges" },
-                { path: '', title: "Temp Labour/On Contract Labour Daily Wage Tracker" }
+                { path: 'logistic/items', title: "Items" },
+                { path: 'work-progress', title: "Inward/Outward Register" },
+                { path: 'work-progress', title: "Manual Inventry Tracker" },
+                { path: 'work-progress', title: "Inventry & Warehouse Mgmt Checklist" },
+                { path: 'work-progress', title: "Local frieght & handling Charges" },
+                { path: 'work-progress', title: "Temp Labour/On Contract Labour Daily Wage Tracker" }
             ]
     },
     {
         id: 6, title: "Safety & Housekeeping", childs:
             [
-                { path: '', title: "Daily Office & Washroom Cleaning Tracker" },
-                { path: '', title: "Security and safety" }
+                { path: 'work-progress', title: "Daily Office & Washroom Cleaning Tracker" },
+                { path: 'work-progress', title: "Security and safety" }
             ]
     },
     {

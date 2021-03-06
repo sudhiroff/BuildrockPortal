@@ -15,8 +15,8 @@ import { JsonpClientBackend } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   public isProgressOpen: Boolean = false;
   public form = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required)
+    EmailId: new FormControl('', [Validators.required, Validators.email]),
+    Password: new FormControl('', Validators.required)
   });
   public error;
 
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   get email() {
-    return this.form.get('email');
+    return this.form.get('EmailId');
   }
 
   public Login_Click() {
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       this.loginService.UserLogin(this.form.value)
         .subscribe(result => {
           if (result['status'] === "success") {
-            localStorage.setItem('user', JSON.stringify(result['user']));
+            localStorage.setItem('user', JSON.stringify(result['body']));
             localStorage.setItem('isLoggedIn', "true");
             this.router.navigateByUrl("/dashboard");
           } else {
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           this.isProgressOpen = false;
         }, (err) => {
           this.isProgressOpen = false;
-          this.error = err;
+          this.error = err['message'];
         })
     }
   }
