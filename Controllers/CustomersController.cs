@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BuildrockPortal.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BuildrockPortal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CustomersController : ControllerBase
     {
         private readonly BuildrockContext _context;
@@ -24,6 +26,7 @@ namespace BuildrockPortal.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customers>>> GetCustomers()
         {
+            Console.WriteLine("get customers list...");
             return await _context.Customers.ToListAsync();
         }
 

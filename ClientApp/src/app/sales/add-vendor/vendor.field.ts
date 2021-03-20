@@ -5,10 +5,10 @@ export const ctrls = [
             { id: "VendorName", title: "Vendor Name", type: "textbox", isRequired: true },
             { id: "CompanyName", title: "Company Name", type: "textbox", validation: [] },
             { id: "VendorEmail", title: "Vendor Email", type: "textbox", validation: [] },
-            { id: "VendorPhone", title: "Vendor Phone", type: "textbox", validation: "Validators.required" },
-            { id: "ContactPersonName", title: "Contact Person Name", type: "textbox", validation: [] },
-            { id: "ContactPersonEmail", title: "Email", type: "textbox", isRequired: true },
-            { id: "ContactPersonPhone", title: "Phone", type: "textbox", validation: [] }
+            { id: "VendorPhone", title: "Vendor Phone", type: "textbox",isRequired: true, validation: "Validators.required" },
+            { id: "ContactPersonName", title: "Contact Person Name", type: "textbox", isRequired: true,},
+            { id: "ContactPersonEmail", title: "Email", type: "textbox", },
+            { id: "ContactPersonPhone", title: "Phone", type: "textbox", isRequired: true, validation: [] }
         ]
     },
     {

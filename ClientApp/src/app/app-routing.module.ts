@@ -3,14 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuthGuard } from './auth.guard';
 import { WorkProgressComponent } from './work-progress/work-progress.component';
-
+import { AuthGuard } from './authentication/auth.guard';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
   {
-    path: "", component: LayoutComponent,  children: [
+    path: "", component: LayoutComponent, canActivateChild:[AuthGuard], children: [
       { path: "dashboard", component: DashboardComponent },
       { path: "work-progress", component: WorkProgressComponent },
       { path: 'logistic', loadChildren: () => import('./logistic/logistic.module').then(m => m.LogisticModule) },

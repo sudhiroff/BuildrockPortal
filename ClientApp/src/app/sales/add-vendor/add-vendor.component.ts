@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -11,6 +11,7 @@ import { ctrls } from './vendor.field';
   styleUrls: ['./add-vendor.component.css']
 })
 export class AddVendorComponent implements OnInit {
+  @ViewChild('stepper') stepper;
   public form:FormGroup;
   public formCtrls:Array<any>=ctrls;
   public mode:String="Add";
@@ -65,13 +66,13 @@ export class AddVendorComponent implements OnInit {
 
   public saveCustomer(){
     if(this.form.valid){
-      this.sharedSvc.IsProgress(true);
+      //this.sharedSvc.IsProgress(true);
       this.salesService.addVendor(this.form.value)
       .subscribe(res=>{
-        this.sharedSvc.IsProgress(false);
+       // this.sharedSvc.IsProgress(false);
         this.router.navigateByUrl('/sales/vendors');
       },(ex)=>{
-        this.sharedSvc.IsProgress(false);
+       // this.sharedSvc.IsProgress(false);
         console.log(ex);
       })
     }
@@ -79,20 +80,34 @@ export class AddVendorComponent implements OnInit {
 
   public updateCustomer(){
     if(this.form.valid){
-      this.sharedSvc.IsProgress(true);
+     // this.sharedSvc.IsProgress(true);
       let form=this.form.value;
       for(let x in form){
         this.vendorModel[x]=form[x];
       }
-      console.log(this.vendorModel);
+      //console.log(this.vendorModel);
       this.salesService.updateVendor(this.vendorId,this.vendorModel)
       .subscribe(res=>{
-        this.sharedSvc.IsProgress(false);
+       // this.sharedSvc.IsProgress(false);
         this.router.navigateByUrl('/sales/vendors');
       },(ex)=>{
-        this.sharedSvc.IsProgress(false);
+      //  this.sharedSvc.IsProgress(false);
         console.log(ex);
       })
+    }
+  }
+
+  onNext(step: string) {
+    if (this.mode != 'View') {
+      if (step == 'step1') {
+        if (this.form.controls['VendorName'].valid
+          && this.form.controls['VendorPhone'].valid
+          && this.form.controls['ContactPersonName'].valid
+          && this.form.controls['ContactPersonPhone'].valid)
+          this.stepper.next();
+      }
+    } else {
+      this.stepper.next();
     }
   }
 

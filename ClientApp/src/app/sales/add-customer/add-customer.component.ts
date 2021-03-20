@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -11,6 +11,7 @@ import { ctrls } from './customer.field';
   styleUrls: ['./add-customer.component.css']
 })
 export class AddCustomerComponent implements OnInit {
+  @ViewChild('stepper') stepper;
   public form:FormGroup;
   public formCtrls:Array<any>=ctrls;
   public mode:String="Add";
@@ -50,28 +51,30 @@ export class AddCustomerComponent implements OnInit {
     });
   }
   prepareForm() {
-    let obj={};
-    this.formCtrls.forEach(sec=>{
-       sec['items'].forEach(x => {
-         if(x.isRequired){
-          obj[x.id]=['',[Validators.required]]
-         }else{
-          obj[x.id]='';
-         }         
-       });       
-    });
+    let obj = {};
+    this.formCtrls.forEach(sec => { sec['items'].forEach(x => { obj[x.id] = '' }) });
     this.form=this.fb.group(obj);
+    this.formCtrls.forEach(sec => {
+      sec['items'].forEach(x => {
+        if (x.isRequired) {
+          this.form.controls[x.id].setValidators(Validators.required);
+        }
+        if (x.isEmail) {
+          this.form.controls[x.id].setValidators(Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"));
+        }
+      })
+    });
   }
 
   public saveCustomer(){
     if(this.form.valid){
-      this.sharedSvc.IsProgress(true);
+      //this.sharedSvc.IsProgress(true);
       this.salesService.addCustomer(this.form.value)
       .subscribe(res=>{
-        this.sharedSvc.IsProgress(false);
+        //this.sharedSvc.IsProgress(false);
         this.router.navigateByUrl('/sales/customers');
       },(ex)=>{
-        this.sharedSvc.IsProgress(false);
+        //this.sharedSvc.IsProgress(false);
         console.log(ex);
       })
     }
@@ -79,7 +82,7 @@ export class AddCustomerComponent implements OnInit {
 
   public updateCustomer(){
     if(this.form.valid){
-      this.sharedSvc.IsProgress(true);
+      //this.sharedSvc.IsProgress(true);
       let form=this.form.value;
       for(let x in form){
         this.customerModel[x]=form[x];
@@ -87,12 +90,28 @@ export class AddCustomerComponent implements OnInit {
       console.log(this.customerModel);
       this.salesService.updateCustomer(this.customerId,this.customerModel)
       .subscribe(res=>{
-        this.sharedSvc.IsProgress(false);
+        //this.sharedSvc.IsProgress(false);
         this.router.navigateByUrl('/sales/customers');
       },(ex)=>{
-        this.sharedSvc.IsProgress(false);
+       // this.sharedSvc.IsProgress(false);
         console.log(ex);
       })
+    }
+  }
+
+  onNext(step: string) {
+    if (this.mode != 'View') {
+      if (step == 'step1') {
+        let allValid = true;
+        this.formCtrls[0].items.forEach(element => {
+          if (this.form.controls[element.id].invalid) {
+            allValid = false;
+          }
+        });
+        allValid ? this.stepper.next() : false
+      }
+    } else {
+      this.stepper.next();
     }
   }
 }

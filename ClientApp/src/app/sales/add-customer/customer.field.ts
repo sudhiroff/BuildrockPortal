@@ -1,14 +1,13 @@
-export const ctrls = [
-    {
+export const ctrls = [    {
         "sec": 1,
         "items": [
             { id: "CustomerName", title: "Customer Name", type: "textbox", isRequired: true },
             { id: "CompanyName", title: "Company Name", type: "textbox", validation: [] },
-            { id: "CustomerEmail", title: "Customer Email", type: "textbox", validation: [] },
-            { id: "CustomerPhone", title: "Customer Phone", type: "textbox", validation: "Validators.required" },
-            { id: "ContactPersonName", title: "Contact Person Name", type: "textbox", validation: [] },
-            { id: "ContactPersonEmail", title: "Email", type: "textbox", isRequired: true },
-            { id: "ContactPersonPhone", title: "Phone", type: "textbox", validation: [] }
+            { id: "CustomerEmail", title: "Customer Email", type: "textbox", isEmail:true },
+            { id: "CustomerPhone", title: "Customer Phone", type: "textbox", isRequired: true },
+            { id: "ContactPersonName", title: "Contact Person Name", type: "textbox",isRequired: true, validation: [] },
+            { id: "ContactPersonEmail", title: "Email", type: "textbox",isEmail:true },
+            { id: "ContactPersonPhone", title: "Phone", type: "textbox", isRequired: true}
         ]
     },
     {

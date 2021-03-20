@@ -19,6 +19,11 @@ import { TestComponent } from './test/test.component';
 import { AppMaterialModule } from './material-module';
 import { WorkProgressComponent } from './work-progress/work-progress.component';
 import { SharedModule } from './shared/shared.module';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { NgHttpLoaderModule } from 'ng-http-loader';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,15 +37,27 @@ import { SharedModule } from './shared/shared.module';
     BreadcrumbComponent,
     FooterComponent,
     ToDoListComponent,
-    WorkProgressComponent
+    WorkProgressComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     SharedModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgHttpLoaderModule.forRoot(),
+    FlexLayoutModule,
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: [environment.baseUrl],
+        sendAccessToken: true        
+      }
+    })
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [OAuthService ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    LoaderComponent
+  ]
 })
 export class AppModule { }

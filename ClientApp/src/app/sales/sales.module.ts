@@ -8,6 +8,7 @@ import { AddVendorComponent } from './add-vendor/add-vendor.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from '../material-module';
+import { AddressComponent } from './address/address.component';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { AppMaterialModule } from '../material-module';
     CustomersComponent, 
     VendorsComponent, 
     AddVendorComponent, 
-    AddCustomerComponent
+    AddCustomerComponent, AddressComponent
   ],
   imports: [
     CommonModule,

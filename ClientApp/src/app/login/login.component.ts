@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
-import { JsonpClientBackend } from '@angular/common/http';
-// import { Observable } from 'rxjs';
-// import { Store, select } from "@ngrx/store";
-// import { increment,decrement,reset } from "../store/actions/counter.actions";
+import { AuthService } from '../authentication/auth.service';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +21,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor(private router: Router, private fb: FormBuilder,
-    private loginService: LoginService) {
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService,
+    private loginService: LoginService, private oauthService: OAuthService) {
 
   }
 
@@ -38,9 +36,11 @@ export class LoginComponent implements OnInit {
       this.loginService.UserLogin(this.form.value)
         .subscribe(result => {
           if (result['status'] === "success") {
-            localStorage.setItem('user', JSON.stringify(result['body']));
-            localStorage.setItem('isLoggedIn', "true");
-            this.router.navigateByUrl("/dashboard");
+            localStorage.setItem('buildrock', JSON.stringify(result['body']));
+            sessionStorage.setItem('access_token', result['body']['token']);
+            if (this.authService.isLoggedIn()) {
+              this.router.navigateByUrl("/dashboard");
+            }
           } else {
             this.error = result['msg'];
           }

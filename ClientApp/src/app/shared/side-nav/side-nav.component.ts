@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from 'src/app/authentication/auth.service';
 import { nav } from '../navbar.data';
 import { SharedService } from '../shared.service';
 import { resultType } from '../types/sub.result';
@@ -17,8 +17,8 @@ export class SideNavComponent implements OnInit {
   constructor(private authService: AuthService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.fullName = this.authService.fullName;
-    let roleId = this.authService.role;
+    this.fullName = this.authService.userInfo['Name'];
+    //let roleId = this.authService.role;
     // this.sharedService.GetRole(roleId)
     //   .subscribe((result: resultType) => {
     //     if (result.status == "success") {

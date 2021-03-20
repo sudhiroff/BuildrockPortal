@@ -30,3 +30,19 @@
 .card{
  border-radius: 0px;
 }
+.mat-form-field{
+    font-family: inherit!important;
+}
+.mat-form-field.mat-form-field-invalid .mat-form-field-label{
+    font-weight: 500!important;
+}
+label:not(.form-check-label):not(.custom-file-label){
+    font-weight: 500!important;
+}
+.form-section .lbl{
+    position: relative;
+    top:20px;   
+}
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: .8em 0 1em 0;
+}
